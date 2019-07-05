@@ -5,7 +5,7 @@ class Stock:
     import datetime
     now = datetime.datetime.now()
 
-    raw = Fetcher(ticker, [2018,1,1], [now.year,now.month,now.day - 1])
+    raw = Fetcher(ticker, [2018,1,1], [now.year,now.month,now.day])
     self.data = raw.getHistorical()
     self.name = ticker
 
@@ -54,7 +54,7 @@ class Stock:
     self.features.append(self.m_opens)
     self.features.append(self.m_volumes)
 
-    self.y = self.percentChangeY(self.r_opens, self.r_closes)#r_opens
+    self.y = self.percentChangeY(self.r_closes, self.r_closes)#r_opens
 
   def relPos(self, a):
     iems = []
