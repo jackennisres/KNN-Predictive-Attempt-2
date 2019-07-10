@@ -8,7 +8,7 @@ class Stock:
     raw = Fetcher(ticker, [2018,1,1], [now.year,now.month,now.day])
     self.data = raw.getHistorical()
     self.name = ticker
-
+    
 
     self.features = []
 

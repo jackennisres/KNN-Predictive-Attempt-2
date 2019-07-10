@@ -10,7 +10,7 @@ class Config:
     
     self.counter = 0
     self.shuffles = 3
-    self.threshold = 70
+    self.threshold = 80
     self.best_features = []
 
     self.indi = []
@@ -35,18 +35,19 @@ class Config:
   #Basic KNN Prediction - where if the data (features) don't exist, the function exits.
   
   def predict(self, data, answers):
+    (print(f"Best Score: {self.score} - Iteration: {self.counter}", end="\r"))
     indexing_data = data
     self.counter += 1
-    print(self.counter)
+    #print(self.counter)
 
-    print("Making a prediction")
+    #print("Making a prediction")
 
     import copy
     cpy = copy.copy(data)
 
     
     if self.threshold >= self.score:
-      print("Threshold " + str(self.threshold) + " : Score " + str(self.score))
+      #print("Threshold " + str(self.threshold) + " : Score " + str(self.score))
 
       """
       if self.counter >= 1000 and self.shuffles != 0:
@@ -62,7 +63,7 @@ class Config:
       else:
         for i in range(1, 20):
           self.counter += 1
-          print(self.counter)
+          #print(self.counter)
 
           from sklearn.neighbors import KNeighborsClassifier
           from sklearn.model_selection import train_test_split as tts
@@ -74,7 +75,7 @@ class Config:
           
           score = round(knn.score(xTest, yTest) * 100, 2)
 
-          print("Attempt Score {}".format(score))
+          #print("Attempt Score {}".format(score))
           if score >= self.score:
             self.score = score
             self.neighbors = i
@@ -86,7 +87,7 @@ class Config:
               for ii in data:
                 if ii is self.features[i]:
                   self.indi.append(i)
-            #(print(f"Best Score: {self.score}", end="\r"))
+
             
     return
 

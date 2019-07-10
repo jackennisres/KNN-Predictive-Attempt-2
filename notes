@@ -1,0 +1,14 @@
+highest = 0
+
+for i in range(1, 30):
+
+  
+  y = np.transpose(apple.y)
+  from sklearn.model_selection import train_test_split as tts
+  xTrain, xTest, yTrain, yTest = tts(features, y)
+  knn = KNeighborsClassifier(n_neighbors=i)
+  knn.fit(xTrain, yTrain)
+  if knn.score(xTest, yTest) > highest:
+    highest = knn.score(xTest, yTest)
+  print("Score {} ".format(knn.score(xTest, yTest)))
+print("Highest {}".format(highest))
